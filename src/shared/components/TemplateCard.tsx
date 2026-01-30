@@ -4,7 +4,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { CommandOutput } from './CommandOutput';
-import { replacePlaceholders, toCapitalize, removeUnderscore } from '@/lib/utils';
+import { cn, replacePlaceholders, toCapitalize, removeUnderscore } from '@/lib/utils';
+import { useActiveTemplate } from '@/shared/context/ActiveTemplateContext';
 
 interface TemplateCardProps {
     template: CommandTemplate;
@@ -15,6 +16,17 @@ interface TemplateCardProps {
  */
 export function TemplateCard({template}: TemplateCardProps) {
     const [inputs, setInputs] = useState<TemplateInputs>({});
+    const { activeId, setActiveId } = useActiveTemplate();
+    
+    const isActive = activeId === template.id;
+
+    const handleCardClick = () => {
+        setActiveId(template.id);
+    };
+
+    const handleInputFocus = () => {
+        setActiveId(template.id);
+    };
 
     const handleInputChange = (key: string, value: string) => {
         setInputs((prev) => ({
@@ -51,7 +63,14 @@ export function TemplateCard({template}: TemplateCardProps) {
     const hasInputs = Object.values(inputs).some((value) => value.trim() !== '');
 
     return (
-        <Card className="w-full" id={template.id}>
+        <Card 
+            className={cn(
+                "w-full transition-all cursor-pointer",
+                isActive && "ring-2 ring-primary ring-offset-2 ring-offset-background"
+            )} 
+            id={template.id}
+            onClick={handleCardClick}
+        >
             <CardHeader>
                 <CardTitle className="text-xl">{template.name}</CardTitle>
                 <CardDescription>{template.description}</CardDescription>
@@ -75,6 +94,7 @@ export function TemplateCard({template}: TemplateCardProps) {
                                         placeholder={`Nhập ${removeUnderscore(placeholder)}...`}
                                         value={inputs[placeholder] || ''}
                                         onChange={(e) => handleInputChange(placeholder, e.target.value)}
+                                        onFocus={handleInputFocus}
                                     />
                                 </div>
                             ))}

@@ -1,34 +1,12 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { MainLayout } from './layouts/MainLayout';
 import { RootError } from './layouts/RootError';
-
-// Import tất cả các module
-import { gitModule } from '@/features/git';
-import { dockerModule } from '@/features/docker';
-import { wordpressModule } from '@/features/wordpress';
-import { linuxModule } from '@/features/linux';
-import { sshModule } from '@/features/ssh';
-import { pythonModule } from '@/features/python';
-import { rcloneModule } from '@/features/rclone';
+import { featureModules } from './modules';
 
 // Pages
 import { HomePage } from '@/pages/HomePage';
 import { AboutPage } from '@/pages/AboutPage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
-
-/**
- * Danh sách các feature modules
- * Thêm module mới vào đây để tự động tạo route và sidebar item
- */
-export const featureModules = [
-    gitModule,
-    linuxModule,
-    sshModule,
-    rcloneModule,
-    dockerModule,
-    pythonModule,
-    wordpressModule,    
-];
 
 /**
  * Tự động tạo routes từ feature modules
@@ -55,3 +33,6 @@ export const router = createBrowserRouter([
         ],
     },
 ]);
+
+// Re-export featureModules for backward compatibility
+export { featureModules } from './modules';

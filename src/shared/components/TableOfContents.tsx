@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import type { CommandTemplate } from "@/shared/types";
+import { useActiveTemplate } from "@/shared/context/ActiveTemplateContext";
 
 interface TableOfContentsProps {
   templates: CommandTemplate[];
@@ -10,37 +10,16 @@ interface TableOfContentsProps {
 
 /**
  * Table of Contents component để điều hướng nhanh đến templates
+ * Chỉ highlight khi click vào card hoặc navigation item
  */
 export function TableOfContents({ templates, className }: TableOfContentsProps) {
-  const [activeId, setActiveId] = useState<string>("");
+  const { activeId, setActiveId } = useActiveTemplate();
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveId(entry.target.id);
-          }
-        });
-      },
-      {
-        rootMargin: "-20% 0% -35% 0%",
-        threshold: 0.5,
-      }
-    );
-
-    // Observe tất cả template cards
-    templates.forEach((template) => {
-      const element = document.getElementById(template.id);
-      if (element) {
-        observer.observe(element);
-      }
-    });
-
-    return () => observer.disconnect();
-  }, [templates]);
-
-  const scrollToTemplate = (id: string) => {
+  const handleNavigationClick = (id: string) => {
+    // Set active id trước
+    setActiveId(id);
+    
+    // Scroll đến template
     const element = document.getElementById(id);
     if (element) {
       const yOffset = -80; // Offset cho sticky header
@@ -53,7 +32,7 @@ export function TableOfContents({ templates, className }: TableOfContentsProps) 
     <Card className={className}>
       <CardHeader className="pb-3">
         <CardTitle className="text-base font-semibold flex items-center gap-2">
-          📑 Quick Navigation
+          Quick Navigation
         </CardTitle>
       </CardHeader>
       <CardContent>
@@ -62,7 +41,7 @@ export function TableOfContents({ templates, className }: TableOfContentsProps) 
             {templates.map((template) => (
               <li key={template.id}>
                 <button
-                  onClick={() => scrollToTemplate(template.id)}
+                  onClick={() => handleNavigationClick(template.id)}
                   className={cn(
                     "text-left text-sm w-full px-3 py-2 rounded-md transition-all hover:bg-accent hover:text-accent-foreground",
                     activeId === template.id
