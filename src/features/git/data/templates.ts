@@ -18,9 +18,10 @@ export const templates: CommandTemplate[] = [
         category: 'Git',
         name: '📥 Clone Repository (HungNth)',
         description: 'Clone một repository từ GitHub với user HungNth',
-        placeholders: ['repo'],
+        placeholders: ['repo', 'branch'],
         commands: [
             { cmd: 'git clone git@hungnth:Hungnth/${repo}.git' },
+            { cmd: 'git clone -b ${branch} git@hungnth:Hungnth/${repo}.git' },
             { cmd: 'git config user.name "Hungnth" && git config user.email "thienhungnth@gmail.com"' }
         ],
     },
