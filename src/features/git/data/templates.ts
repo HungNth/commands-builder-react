@@ -5,12 +5,12 @@ export const templates: CommandTemplate[] = [
         id: 'git-add-remote-nth',
         category: 'Git',
         name: '🎉 Config New Repo (HungNth)',
-        description: 'Cấu hình một repo hoàn toàn mới với user Hungnth',
+        description: 'Cấu hình một repo hoàn toàn mới với user HungNth',
         placeholders: ['repo'],
         commands: [
-            { cmd: 'git init && git config user.name "Hungnth" && git config user.email "thienhungnth@gmail.com" && git add . && git commit -m "Initial commit" && git branch -M main' },
-            { cmd: 'git remote add origin git@hungnth:Hungnth/${repo}.git' },
-            { cmd: 'git remote set-url origin git@hungnth:Hungnth/${repo}.git' },
+            { cmd: 'git init && git config user.name "HungNth" && git config user.email "thienhungnth@gmail.com" && git add . && git commit -m "Initial commit" && git branch -M main' },
+            { cmd: 'git remote add origin git@hungnth:HungNth/${repo}.git' },
+            { cmd: 'git remote set-url origin git@hungnth:HungNth/${repo}.git' },
         ],
     },
     {
@@ -20,9 +20,9 @@ export const templates: CommandTemplate[] = [
         description: 'Clone một repository từ GitHub với user HungNth',
         placeholders: ['repo', 'branch'],
         commands: [
-            { cmd: 'git clone git@hungnth:Hungnth/${repo}.git' },
-            { cmd: 'git clone -b ${branch} git@hungnth:Hungnth/${repo}.git' },
-            { cmd: 'git config user.name "Hungnth" && git config user.email "thienhungnth@gmail.com"' }
+            { cmd: 'git clone git@hungnth:HungNth/${repo}.git' },
+            { cmd: 'git clone -b ${branch} git@hungnth:HungNth/${repo}.git' },
+            { cmd: 'git config user.name "HungNth" && git config user.email "thienhungnth@gmail.com"' }
         ],
     },
     {
