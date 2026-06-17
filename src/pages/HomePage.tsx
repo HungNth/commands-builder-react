@@ -1,6 +1,12 @@
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardHeader,
+    CardTitle,
+} from '@/components/ui/card';
 import { featureModules } from '@/app/router';
 import { ArrowRight } from 'lucide-react';
 
@@ -16,8 +22,8 @@ export function HomePage() {
                     ⚡ Command Builder
                 </h1>
                 <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                    Tạo nhanh các lệnh command line với các template được định nghĩa sẵn.
-                    Không cần nhớ cú pháp phức tạp.
+                    Tạo nhanh các lệnh command line với các template được định
+                    nghĩa sẵn. Không cần nhớ cú pháp phức tạp.
                 </p>
             </div>
 
@@ -26,7 +32,10 @@ export function HomePage() {
                 {featureModules.map((module) => {
                     const Icon = module.icon;
                     return (
-                        <Card key={module.path} className="hover:shadow-lg transition-shadow">
+                        <Card
+                            key={module.path}
+                            className="hover:shadow-lg transition-shadow"
+                        >
                             <CardHeader>
                                 <div className="flex items-center gap-3">
                                     <div className="p-2 rounded-lg bg-primary/10">
@@ -57,33 +66,42 @@ export function HomePage() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <Card>
                         <CardHeader>
-                            <CardTitle className="text-lg">1️⃣ Chọn Template</CardTitle>
+                            <CardTitle className="text-lg">
+                                1️⃣ Chọn Template
+                            </CardTitle>
                         </CardHeader>
                         <CardContent>
                             <p className="text-sm text-muted-foreground">
-                                Chọn module và template phù hợp với task bạn muốn thực hiện
+                                Chọn module và template phù hợp với task bạn
+                                muốn thực hiện
                             </p>
                         </CardContent>
                     </Card>
 
                     <Card>
                         <CardHeader>
-                            <CardTitle className="text-lg">2️⃣ Nhập Thông Tin</CardTitle>
+                            <CardTitle className="text-lg">
+                                2️⃣ Nhập Thông Tin
+                            </CardTitle>
                         </CardHeader>
                         <CardContent>
                             <p className="text-sm text-muted-foreground">
-                                Điền các thông tin cần thiết vào các trường input
+                                Điền các thông tin cần thiết vào các trường
+                                input
                             </p>
                         </CardContent>
                     </Card>
 
                     <Card>
                         <CardHeader>
-                            <CardTitle className="text-lg">3️⃣ Copy & Run</CardTitle>
+                            <CardTitle className="text-lg">
+                                3️⃣ Copy & Run
+                            </CardTitle>
                         </CardHeader>
                         <CardContent>
                             <p className="text-sm text-muted-foreground">
-                                Copy command được tạo ra và chạy trong terminal của bạn
+                                Copy command được tạo ra và chạy trong terminal
+                                của bạn
                             </p>
                         </CardContent>
                     </Card>
