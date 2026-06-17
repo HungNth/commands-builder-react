@@ -5,7 +5,7 @@ import { ActivityOutlet } from '@/shared/components';
 import { featureModules } from '@/app/modules';
 
 // Tạo danh sách các valid paths từ featureModules
-const validPaths = ['', 'about', ...featureModules.map(m => m.path)];
+const validPaths = ['', 'about', ...featureModules.map(m => m.path.replace(/^\//, ''))];
 
 /**
  * Main Layout - Layout chính cho toàn bộ ứng dụng

@@ -1,14 +1,14 @@
-import { ModulePage } from './pages/ModulePage.tsx';
-import { templates } from './data/templates.ts';
+import { defineCommandModule } from '@/features/defineCommandModule';
+import { templates } from './data/templates';
 import { WordPressIcon } from './components/WordPressIcon.tsx';
 
-/**
- * Module Configuration
- */
-export const wordpressModule = {
+export const wordpressModule = defineCommandModule({
+    id: 'wordpress',
     name: 'WordPress',
-    path: '/wordpress',
+    pathSegment: 'wordpress',
     icon: WordPressIcon,
-    element: ModulePage,
-    templates: templates,
-} as const;
+    order: 70,
+    templates,
+});
+
+export default wordpressModule;

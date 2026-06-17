@@ -1,14 +1,14 @@
-import { ModulePage } from './pages/ModulePage.tsx';
-import { templates } from './data/templates.ts';
-import { SSHIcon } from './components/SSHIcon.tsx';
+import { defineCommandModule } from '@/features/defineCommandModule';
+import { templates } from './data/templates';
+import { SSHIcon } from './components/SSHIcon';
 
-/**
- * Git Module Configuration
- */
-export const sshModule = {
+export const sshModule = defineCommandModule({
+    id: 'ssh',
     name: 'SSH',
-    path: '/ssh',
+    pathSegment: 'ssh',
     icon: SSHIcon,
-    element: ModulePage,
-    templates: templates,
-} as const;
+    order: 30,
+    templates,
+});
+
+export default sshModule;

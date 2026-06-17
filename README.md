@@ -71,3 +71,8 @@ export default defineConfig([
   },
 ])
 ```
+
+## Adding Templates And Pages
+
+Template and module setup is documented in [`docs/templates.md`](docs/templates.md). Use `defineTemplates()` for command data and `defineCommandModule()` for new command pages so the router, sidebar, and home page stay automatic.
+

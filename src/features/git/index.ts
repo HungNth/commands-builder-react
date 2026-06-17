@@ -1,14 +1,14 @@
-import { ModulePage } from './pages/ModulePage.tsx';
-import { templates } from './data/templates.ts';
+import { defineCommandModule } from '@/features/defineCommandModule';
+import { templates } from './data/templates';
 import { GitIcon } from './components/GitIcon';
 
-/**
- * Git Module Configuration
- */
-export const gitModule = {
+export const gitModule = defineCommandModule({
+    id: 'git',
     name: 'Git',
-    path: '/git',
+    pathSegment: 'git',
     icon: GitIcon,
-    element: ModulePage,
-    templates: templates,
-} as const;
+    order: 10,
+    templates,
+});
+
+export default gitModule;

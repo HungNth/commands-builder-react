@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { cn } from '@/lib/utils';
-import { featureModules } from '@/app/router';
+import { featureModules } from '@/app/modules';
 import { Github, Home } from 'lucide-react';
 import { Button } from '@/components/ui/button.tsx';
 

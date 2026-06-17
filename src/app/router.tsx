@@ -12,10 +12,9 @@ import { NotFoundPage } from '@/pages/NotFoundPage';
  * Tự động tạo routes từ feature modules
  */
 const featureRoutes = featureModules.map((module) => ({
-        path: module.path,
-        element: <module.element />,
-    }
-));
+    path: module.path,
+    element: <module.element />,
+}));
 
 /**
  * Router configuration với dynamic routes
@@ -26,13 +25,10 @@ export const router = createBrowserRouter([
         element: <MainLayout />,
         errorElement: <RootError />,
         children: [
-            {index: true, element: <HomePage />},
-            ...featureRoutes, // Tự động thêm routes từ modules
-            {path: 'about', element: <AboutPage />},
-            {path: '*', element: <NotFoundPage />},
+            { index: true, element: <HomePage /> },
+            ...featureRoutes,
+            { path: 'about', element: <AboutPage /> },
+            { path: '*', element: <NotFoundPage /> },
         ],
     },
 ]);
-
-// Re-export featureModules for backward compatibility
-export { featureModules } from './modules';

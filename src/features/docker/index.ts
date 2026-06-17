@@ -1,11 +1,14 @@
-import { ModulePage } from './pages/ModulePage.tsx';
-import { templates } from './data/templates.ts';
+import { defineCommandModule } from '@/features/defineCommandModule';
+import { templates } from './data/templates';
 import { DockerIcon } from './components/DockerIcon';
 
-export const dockerModule = {
+export const dockerModule = defineCommandModule({
+    id: 'docker',
     name: 'Docker',
-    path: '/docker',
+    pathSegment: 'docker',
     icon: DockerIcon,
-    element: ModulePage,
-    templates: templates,
-} as const;
+    order: 50,
+    templates,
+});
+
+export default dockerModule;

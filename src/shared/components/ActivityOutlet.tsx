@@ -15,7 +15,7 @@ export function ActivityOutlet() {
     // Kiểm tra xem đang ở trang nào
     const isHome = currentPath === '';
     const isAbout = currentPath === 'about';
-    const activeModule = featureModules.find(m => m.path === currentPath);
+    const activeModule = featureModules.find(m => m.path === `/${currentPath}`);
 
     return (
         <>

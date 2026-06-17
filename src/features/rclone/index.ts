@@ -1,14 +1,14 @@
-import { ModulePage } from './pages/ModulePage.tsx';
-import { templates } from './data/templates.ts';
-import { RcloneIcon } from './components/RcloneIcon.tsx';
+import { defineCommandModule } from '@/features/defineCommandModule';
+import { templates } from './data/templates';
+import { RcloneIcon } from './components/RcloneIcon';
 
-/**
- * Git Module Configuration
- */
-export const rcloneModule = {
+export const rcloneModule = defineCommandModule({
+    id: 'rclone',
     name: 'Rclone',
-    path: '/rclone',
+    pathSegment: 'rclone',
     icon: RcloneIcon,
-    element: ModulePage,
-    templates: templates,
-} as const;
+    order: 40,
+    templates,
+});
+
+export default rcloneModule;

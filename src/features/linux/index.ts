@@ -1,14 +1,14 @@
-import { ModulePage } from './pages/ModulePage.tsx';
-import { templates } from './data/templates.ts';
-import { LinuxIcon } from './components/LinuxIcon.tsx';
+import { defineCommandModule } from '@/features/defineCommandModule';
+import { templates } from './data/templates';
+import { LinuxIcon } from './components/LinuxIcon';
 
-/**
- * Git Module Configuration
- */
-export const linuxModule = {
+export const linuxModule = defineCommandModule({
+    id: 'linux',
     name: 'Linux',
-    path: '/linux',
+    pathSegment: 'linux',
     icon: LinuxIcon,
-    element: ModulePage,
-    templates: templates,
-} as const;
+    order: 20,
+    templates,
+});
+
+export default linuxModule;

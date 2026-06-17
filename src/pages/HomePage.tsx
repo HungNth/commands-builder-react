@@ -7,7 +7,7 @@ import {
     CardHeader,
     CardTitle,
 } from '@/components/ui/card';
-import { featureModules } from '@/app/router';
+import { featureModules } from '@/app/modules';
 import { ArrowRight } from 'lucide-react';
 
 /**

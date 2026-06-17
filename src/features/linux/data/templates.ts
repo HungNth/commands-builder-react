@@ -1,12 +1,10 @@
-import type { CommandTemplate } from '@/shared/types';
+import { defineTemplates } from '@/shared/templates';
 
-export const templates: CommandTemplate[] = [
+export const templates = defineTemplates('Linux', [
     {
         id: 'linux-file-folder',
-        category: 'Linux',
         name: '💽 Files, Folders',
         description: 'Các thao tác với file, folder trên Linux',
-        placeholders: ['name'],
         commands: [
             'ls -lh ${name} # Liệt kê file/folder với thông tin chi tiết',
             'du -sh ${name} # Kiểm tra dung lượng folder',
@@ -16,17 +14,14 @@ export const templates: CommandTemplate[] = [
     },
     {
         id: 'find-delete-files-by-extension',
-        category: 'Linux',
         name: '🗑️ Delete Files',
         description: 'Tìm và xóa file theo định dạng, tên trong thư mục (*.vtt || test-*.js)',
-        placeholders: ['folder', 'file'],
         commands: [
             'find "${folder}" -type f -name "${file}" -delete',
         ],
     },
     {
         id: 'compress-files-folders',
-        category: 'Linux',
         name: '📦 Tar, Zip, RAR',
         description: 'Nén file với tar.gz hoặc giải nén file tar.gz',
         placeholders: ['folder', 'file_name'],
@@ -40,10 +35,8 @@ export const templates: CommandTemplate[] = [
     },
     {
         id: 'linux-temux',
-        category: 'Linux',
         name: '🧮 Tmux',
         description: 'Tạo, quản lý phiên làm việc với Tmux',
-        placeholders: ['session'],
         commands: [
             { cmd: 'tmux ls', note: 'Liệt kê tmux' },
             { cmd: 'tmux new -s ${session}', note: 'Tạo phiên làm việc mới' },
@@ -55,10 +48,8 @@ export const templates: CommandTemplate[] = [
     },
     {
         id: 'wsl-commands',
-        category: 'Linux',
         name: '⌨️ WSL Commands',
         description: 'Các lệnh quản lý Windows Subsystem for Linux (WSL)',
-        placeholders: ['distro'],
         commands: [
             { cmd: 'wsl --update # Cập nhật WSL lên phiên bản mới nhất' },
             { cmd: 'wsl --list --online # Liệt kê các bản Linux có sẵn để cài đặt' },
@@ -68,4 +59,4 @@ export const templates: CommandTemplate[] = [
             { cmd: 'wsl --unregister ${distro} # Gỡ cài đặt bản WSL' },
         ],
     }
-];
+]);

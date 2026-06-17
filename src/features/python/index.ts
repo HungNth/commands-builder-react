@@ -1,14 +1,14 @@
-import { ModulePage } from './pages/ModulePage.tsx';
-import { templates } from './data/templates.ts';
-import { PythonIcon } from './components/PythonIcon.tsx';
+import { defineCommandModule } from '@/features/defineCommandModule';
+import { templates } from './data/templates';
+import { PythonIcon } from './components/PythonIcon';
 
-/**
- * Git Module Configuration
- */
-export const pythonModule = {
+export const pythonModule = defineCommandModule({
+    id: 'python',
     name: 'Python',
-    path: '/python',
+    pathSegment: 'python',
     icon: PythonIcon,
-    element: ModulePage,
-    templates: templates,
-} as const;
+    order: 60,
+    templates,
+});
+
+export default pythonModule;

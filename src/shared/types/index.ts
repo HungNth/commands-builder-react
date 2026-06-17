@@ -1,3 +1,5 @@
+import type { ComponentType } from 'react';
+
 /**
  * Shared types for Command Builder application
  */
@@ -39,21 +41,38 @@ export type CommandTemplate = {
  */
 export type TemplateInputs = Record<string, string>;
 
+export type ModulePageMeta = {
+  /** Tiêu đề hiển thị trong trang module */
+  title: string;
+
+  /** Mô tả ngắn hiển thị dưới tiêu đề */
+  description: string;
+};
+
 /**
  * Represents a feature module configuration
  */
 export type FeatureModule = {
+  /** ID ổn định dùng cho registry và test */
+  id: string;
+
   /** Tên hiển thị của module */
   name: string;
 
   /** Đường dẫn route */
   path: string;
 
+  /** Thứ tự hiển thị trong navigation */
+  order: number;
+
   /** Icon component */
-  icon: React.ComponentType<{ className?: string }>;
+  icon: ComponentType<{ className?: string }>;
 
   /** Element component để render */
-  element: React.ComponentType;
+  element: ComponentType;
+
+  /** Metadata của trang module */
+  page: ModulePageMeta;
 
   /** Danh sách templates của module */
   templates: CommandTemplate[];
