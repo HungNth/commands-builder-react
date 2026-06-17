@@ -14,6 +14,10 @@ const templateSources = [
     ['WordPress', path.resolve(process.cwd(), 'src/features/wordpress/data/templates.ts')],
 ] as const;
 
+const explicitPlaceholderOrderByTemplate = new Map([
+    ['compress-files-folders', ['folder', 'file_name']],
+]);
+
 describe('feature template data', () => {
     it('uses defineTemplates in every feature data file', () => {
         for (const [category, sourcePath] of templateSources) {
@@ -37,7 +41,16 @@ describe('feature template data', () => {
     it('has placeholder metadata matching placeholders used in commands', () => {
         for (const module of featureModules) {
             for (const template of module.templates) {
-                expect([...template.placeholders].sort()).toEqual(collectPlaceholders(template.commands).sort());
+                const inferredPlaceholders = collectPlaceholders(template.commands);
+                const explicitOrder = explicitPlaceholderOrderByTemplate.get(template.id);
+
+                if (explicitOrder) {
+                    expect(template.placeholders).toEqual(explicitOrder);
+                    expect([...template.placeholders].sort()).toEqual([...inferredPlaceholders].sort());
+                    continue;
+                }
+
+                expect(template.placeholders).toEqual(inferredPlaceholders);
             }
         }
     });

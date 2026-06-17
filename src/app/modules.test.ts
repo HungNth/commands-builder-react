@@ -40,14 +40,20 @@ describe('featureModules registry', () => {
 
     it('uses Vite module discovery instead of manual feature imports', () => {
         const source = readFileSync(path.resolve(process.cwd(), 'src/app/modules.ts'), 'utf8');
+        const manuallyRegisteredFeatures = [
+            'git',
+            'docker',
+            'wordpress',
+            'linux',
+            'ssh',
+            'python',
+            'rclone',
+        ];
 
         expect(source).toContain('import.meta.glob');
-        expect(source).not.toContain("from '@/features/git'");
-        expect(source).not.toContain("from '@/features/docker'");
-        expect(source).not.toContain("from '@/features/wordpress'");
-        expect(source).not.toContain("from '@/features/linux'");
-        expect(source).not.toContain("from '@/features/ssh'");
-        expect(source).not.toContain("from '@/features/python'");
-        expect(source).not.toContain("from '@/features/rclone'");
+
+        for (const feature of manuallyRegisteredFeatures) {
+            expect(source).not.toContain(`from '@/features/${feature}'`);
+        }
     });
 });

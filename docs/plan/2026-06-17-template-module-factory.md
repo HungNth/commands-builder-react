@@ -1599,7 +1599,7 @@ Expected: no matches.
 - [ ] Search for repeated feature registry imports:
 
 ```bash
-rg "from '@/features/(git|docker|wordpress|linux|ssh|python|rclone)'" src/app
+rg "from '@/features/(git|docker|wordpress|linux|ssh|python|rclone)'" src/app --glob "!*.test.ts"
 ```
 
 Expected: no matches.
