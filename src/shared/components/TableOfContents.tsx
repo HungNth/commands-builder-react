@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import type { CommandTemplate } from "@/shared/types";
-import { useActiveTemplate } from "@/shared/context/ActiveTemplateContext";
+import { useActiveTemplate } from "@/shared/context/useActiveTemplate";
 
 interface TableOfContentsProps {
   templates: CommandTemplate[];

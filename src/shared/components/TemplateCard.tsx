@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { CommandOutput } from './CommandOutput';
 import { cn, replacePlaceholders, toCapitalize, removeUnderscore } from '@/lib/utils';
-import { useActiveTemplate } from '@/shared/context/ActiveTemplateContext';
+import { useActiveTemplate } from '@/shared/context/useActiveTemplate';
 
 interface TemplateCardProps {
     template: CommandTemplate;

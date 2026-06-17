@@ -1,11 +1,5 @@
-import { createContext, useContext, useState, type ReactNode } from "react";
-
-interface ActiveTemplateContextType {
-  activeId: string;
-  setActiveId: (id: string) => void;
-}
-
-const ActiveTemplateContext = createContext<ActiveTemplateContextType | undefined>(undefined);
+import { useState, type ReactNode } from "react";
+import { ActiveTemplateContext } from "./activeTemplateState";
 
 interface ActiveTemplateProviderProps {
   children: ReactNode;
@@ -23,16 +17,4 @@ export function ActiveTemplateProvider({ children }: ActiveTemplateProviderProps
       {children}
     </ActiveTemplateContext.Provider>
   );
-}
-
-/**
- * Hook để sử dụng ActiveTemplateContext
- * @throws Error nếu được sử dụng ngoài ActiveTemplateProvider
- */
-export function useActiveTemplate() {
-  const context = useContext(ActiveTemplateContext);
-  if (!context) {
-    throw new Error("useActiveTemplate must be used within ActiveTemplateProvider");
-  }
-  return context;
 }
